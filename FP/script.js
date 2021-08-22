@@ -69,3 +69,31 @@ function removeLastItem(arr) {
     return newArray;
 }
 console.log('✔ pure function', removeLastItem(array2), array2);
+
+// Currying
+
+const curriedMultiple = (a) => (b) => (c) => a*b*c;
+const resultCurrying = curriedMultiple(2)(3)(10);
+console.log(resultCurrying);
+
+// Partail Application
+
+const multiply = (a, b, c) => a*b*c;
+const partialMultiplyBy5 = multiply.bind(null, 5);
+const partialResult = partialMultiplyBy5(2, 3);
+console.log(partialResult);
+
+// Memoization
+let cache = {};
+function addNumberTo80(n){
+    if(!(n in cache)){
+        console.log('process that take a long time!');
+        cache[n] = n + 80;
+    }
+
+    return cache[n];
+}
+
+console.log(addNumberTo80(5));
+console.log(addNumberTo80(6));
+console.log(addNumberTo80(5));
